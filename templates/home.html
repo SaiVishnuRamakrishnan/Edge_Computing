@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kirana Product Billing</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'main.css') }}" type="text/css" media="all">
+    <script src="{{ url_for('static', filename = 'capture.js') }}"></script>
+    <link href="{{ url_for('static', filename = 'bootstrap.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename = 'bootstrap.css.map') }}" rel="stylesheet" />
+    <script src="{{ url_for('static', filename = 'jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'jspdf.min.js') }}"></script>
+
+</head>
+<body>
+
+    <div class="container container-fluid text-center p-5">
+        <h1><i><b class="text-success">Kirana Product Billing</b></i></h1>
+    </div>
+
+
+
+    <div class="container fluid-container">
+       <div class="card">
+           <div class="card-header">
+               
+               
+                <div class="text-center p-5">
+                        <h1 class="card-title">Show the Product Infront of camera</h1>
+                    <div class="row p-2">
+
+                            <div class="camera">
+                                    <video id="video">Video stream not available.</video>
+                            </div>
+                    
+
+                        <div class="output">
+                                <canvas id="canvas"> </canvas>
+                                <img id="photo" alt="The screen capture will appear in this box."> 
+                        </div>         
+                    </div>
+                </div>
+           </div>
+
+           <div class="card-body">
+            <input type="file" accept="image/*" capture>
+
+                <button id="startbutton" class="btn btn-primary" style="margin-left: 10%; float: left;">Take Snap</button>
+                
+                <button id="downloadbutton" class="btn btn-primary" onclick="downloadPdf()" style="margin-right: 15%; float: right;">Generate  Bill</button>
+
+                
+                 <label style="text-align:center; margin-left:25%">Product Count:</label><br>
+                 <input type="number"  id="box" class="inp" id="number" value= 1 style="margin-left: 23%; float: left;"/>
+        
+           </div>
+
+           <div class="card-footer text-center">
+               <h2 class="card-text" >PRODUCT BILL</h2>   
+               <button id="totalbutton" class="btn btn-success" onclick="sum()">Total</button>
+           </div>
+       </div>
+    </div>
+
+    <div class="container" id="bill-div">
+        
+
+                <table id="bill">
+                <tr>
+                    <th>Serial Number</th>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Product Cost</th>
+                    <th>Product Count</th>
+                    <th>Total</th>
+
+                </tr>
+                </table>
+        </div>
+        <style>
+                table {
+                    font-family: arial, sans-serif;
+                    border-collapse: collapse;
+                    width: 100%;
+                  }
+                  
+                  td, th {
+                    border: 1px solid #dddddd;
+                    text-align: left;
+                    padding: 8px;
+                  }
+                  
+                  tr:nth-child(even) {
+                    background-color: #dddddd;
+                  }
+        </style>
+</body>
+</html>
+
